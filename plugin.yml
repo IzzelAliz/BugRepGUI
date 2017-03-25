@@ -1,0 +1,47 @@
+name: BugRepGUI
+main: com.ilummc.bugrepgui.Main
+version: 1.5b
+author: IzzelAliz
+website: https://www.spigotmc.org/resources/bugreportgui-better-than-rating.35119/
+commands:
+  bug:
+    description: /bug help for more help
+    usage: /bug help
+  bugrepgui:
+    description: /bugrepgui for more help
+    usage: /bugrepgui
+  report:
+    description: An alias for /bug report
+    usage: /report
+
+permissions:
+  bugrepgui.admin:
+    description: Gives access to all BugRepGUI commands
+    children:
+      bugrepgui.view: true
+      bugrepgui.execute: true
+      bugrepgui.sendback: true
+      bugrepgui.notify: true
+      bugrepgui.stats.text: true
+  bugrepgui.user:
+    description: Gives access to user commands
+    children:
+      bugrepgui.report: true
+  bugrepgui.view:
+    description: Allows you to have a view to all bugs
+    default: op
+  bugrepgui.sendback:
+    description: Allows you to send back to the reporter
+    default: op
+  bugrepgui.execute:
+    description: Allows you to execute a reported bug
+    default: op
+  bugrepgui.report:
+    description: Allows you to report an known bug
+    default: true
+  bugrepgui.notify:
+    description: Allows op to be notified when someone report a bug
+    default: op
+  bugrepgui.stats.text:
+    description: Allows you to view text statistics
+    default: op

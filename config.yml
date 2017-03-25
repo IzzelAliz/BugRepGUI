@@ -1,0 +1,30 @@
+#BugReportGUI Configuration file
+#Google is your friend :)
+debug: false
+check-update: true
+#This could be sqlite, mysql
+database: sqlite
+#These are required if database is set to MySQL
+mysql-url: 'localhost'
+mysql-port: 3306
+mysql-username: ''
+mysql-password: ''
+mysql-db: ''
+###########################################################################
+#This controls the date format(such as CST or PST or EST) in the bug view #
+# Here is a country list for you :)                                       #
+# https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2                        #
+###########################################################################
+locale: 'US'
+lang: 'en'
+#This controls the message when left click a bug
+auto-sendback-msg: '&eThanks for your reporting'
+#This controls the stop sign of reporting
+#Only support number,english letter,some punctuation
+stop-sign: '#end#'
+#Report Alias
+alias: 'r'
+#If you use bungeecord, please set this to true and set database to mysql
+use-bungee: false
+#This controls the speed of checking sendback (in ms)
+check-speed: 2000
