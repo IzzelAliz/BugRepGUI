@@ -13,7 +13,8 @@ public class Main extends JavaPlugin {
 		String alias = this.getConfig().getString("alias");
 		this.saveResource("lang_" + lang + ".yml", false);
 		Storage.init(this.getConfig(), this.getDataFolder(), "lang_" + lang + ".yml");
-		getServer().getPluginManager().registerEvents(new EventListener(), this);
+		getServer().getPluginManager().registerEvents(new EventListener().setAlias(getConfig().getString("alias")),
+				this);
 		getCommand("bug").setExecutor(new cmdExe());
 		getCommand("bugrepgui").setExecutor(new cmdExe());
 		this.getCommand(alias).setExecutor(new cmdExe());

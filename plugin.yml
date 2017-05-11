@@ -10,9 +10,6 @@ commands:
   bugrepgui:
     description: /bugrepgui for more help
     usage: /bugrepgui
-  report:
-    description: An alias for /bug report
-    usage: /report
 
 permissions:
   bugrepgui.admin:

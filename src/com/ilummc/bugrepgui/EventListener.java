@@ -8,12 +8,35 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
 
 public class EventListener implements org.bukkit.event.Listener {
+	String alias;
+	public EventListener setAlias(String msg) {
+		this.alias = msg;
+		return this;
+	}
+	@EventHandler
+	public void onCommand(PlayerCommandPreprocessEvent evt) {
+		if (evt.getMessage().equalsIgnoreCase("/"+alias)) {
+			evt.setCancelled(true);
+			Player sender = evt.getPlayer();
+			if (sender.hasPermission("bugrepgui.report")) {
+				Bug bug = new Bug(sender);
+				Storage.putMap(bug);
+				Storage.send(sender, "input-bug-info");
+				return;
+			} else {
+				Storage.send(sender, "no-perm");
+				return;
+			}
+		}
+	}
+
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = false)
 	public void onChat(AsyncPlayerChatEvent evt) {
 		String regex2 = "[^']+";
