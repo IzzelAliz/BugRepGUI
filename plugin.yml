@@ -1,6 +1,6 @@
 name: BugRepGUI
 main: com.ilummc.bugrepgui.Main
-version: 1.5b
+version: 1.6
 author: IzzelAliz
 website: https://www.spigotmc.org/resources/bugreportgui-better-than-rating.35119/
 commands:
