@@ -17,7 +17,6 @@ public class Main extends JavaPlugin {
 				this);
 		getCommand("bug").setExecutor(new cmdExe());
 		getCommand("bugrepgui").setExecutor(new cmdExe());
-		this.getCommand(alias).setExecutor(new cmdExe());
 		if (this.getConfig().getBoolean("check-update"))
 			UpdateChecker.check(this.getDescription().getVersion(), this.getDescription().getWebsite());
 	}

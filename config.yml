@@ -19,9 +19,6 @@ locale: 'US'
 lang: 'en'
 #This controls the message when left click a bug
 auto-sendback-msg: '&eThanks for your reporting'
-#This controls the stop sign of reporting
-#Only support number,english letter,some punctuation
-stop-sign: '#end#'
 #Report Alias
 alias: 'r'
 #If you use bungeecord, please set this to true and set database to mysql

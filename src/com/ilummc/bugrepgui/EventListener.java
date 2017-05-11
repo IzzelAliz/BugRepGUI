@@ -20,6 +20,7 @@ public class EventListener implements org.bukkit.event.Listener {
 		this.alias = msg;
 		return this;
 	}
+	
 	@EventHandler
 	public void onCommand(PlayerCommandPreprocessEvent evt) {
 		if (evt.getMessage().equalsIgnoreCase("/"+alias)) {
@@ -40,30 +41,17 @@ public class EventListener implements org.bukkit.event.Listener {
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = false)
 	public void onChat(AsyncPlayerChatEvent evt) {
 		String regex2 = "[^']+";
-		String regex = Storage.getConfig().getString("stop-sign");
-		String regex3 = Storage.transfer(regex);
 		Pattern pattern2 = Pattern.compile(regex2);
 		Matcher m2 = pattern2.matcher(evt.getMessage());
 		if (Storage.map.containsKey(evt.getPlayer().getUniqueId().toString())) {
 			evt.setCancelled(true);
-			if (m2.matches() && (!evt.getMessage().matches(regex3))) {
+			if (m2.matches()) {
 				Bug bug = Storage.map.get(evt.getPlayer().getUniqueId().toString());
 				bug.append(evt.getMessage());
-				evt.getPlayer().sendMessage(Storage.getMsg("continue-input").replaceAll("%stopsign%", regex));
+				evt.getPlayer().sendMessage(Storage.getMsg("continue-input"));
 				return;
-			} else if (!evt.getMessage().matches(regex3)) {
+			} else {
 				Storage.send(evt.getPlayer(), "illegal-char");
-				return;
-			}
-			if (evt.getMessage().matches(regex3)) {
-				Bug bug = Storage.map.get(evt.getPlayer().getUniqueId().toString());
-				Database.insert(bug);
-				evt.getPlayer().sendMessage(Storage.getPrefix()
-						+ Storage.getMsg("rep-suc").replaceAll("%serial%", Database.getSerial(evt.getPlayer())));
-				if (!Storage.getConfig().getBoolean("use-bungee")) {
-					Notify.notifyt(evt.getPlayer());
-				}
-				Storage.map.remove(evt.getPlayer().getUniqueId().toString());
 				return;
 			}
 		}
@@ -84,8 +72,15 @@ public class EventListener implements org.bukkit.event.Listener {
 	public void onMove(PlayerMoveEvent evt) {
 		if (Storage.map.containsKey(evt.getPlayer().getUniqueId().toString())) {
 			evt.setCancelled(true);
-			evt.getPlayer().sendMessage(Storage.getMsg("not-complete").replaceAll("%stopsign%",
-					Storage.getConfig().getString("stop-sign")));
+			Bug bug = Storage.map.get(evt.getPlayer().getUniqueId().toString());
+			Database.insert(bug);
+			evt.getPlayer().sendMessage(Storage.getPrefix()
+					+ Storage.getMsg("rep-suc").replaceAll("%serial%", Database.getSerial(evt.getPlayer())));
+			if (!Storage.getConfig().getBoolean("use-bungee")) {
+				Notify.notifyt(evt.getPlayer());
+			}
+			Storage.map.remove(evt.getPlayer().getUniqueId().toString());
+			return;
 		}
 	}
 
