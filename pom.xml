@@ -23,7 +23,7 @@
     <resources>
 			<resource>
 				<targetPath>.</targetPath>
-				<directory>${basedir}</directory>
+				<directory>${basedir}/src/</directory>
 			</resource>
 	</resources>
         <plugins>
