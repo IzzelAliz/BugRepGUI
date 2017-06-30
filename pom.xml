@@ -19,7 +19,7 @@
     </repositories>
 
     <build>
-    
+    <sourceDirectory>src</sourceDirectory>
     <resources>
 			<resource>
 				<targetPath>.</targetPath>
@@ -31,13 +31,13 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.5.1</version>
-                <executions>  
+                <executions>
                   <execution>  
                       <id>default-compile</id>  
                       <phase>compile</phase>  
-                      <goals>  
+                      <goals>
                           <goal>compile</goal>  
-                      </goals>  
+                      </goals>
                   </execution>  
               </executions>
                 <configuration>
