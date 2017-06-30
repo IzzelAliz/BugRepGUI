@@ -6,12 +6,21 @@
 
     <groupId>com.ilummc.bugrepgui</groupId>
     <artifactId>BugRepGUI</artifactId>
-    <version>1.3c</version>
-
+    <version>1.8</version>
+    <resources>
+			<resource>
+				<targetPath>.</targetPath>
+				<directory>${basedir}/</directory>
+			</resource>
+	</resources>
     <repositories>
         <repository>
             <id>bungeecord-repo</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
     </repositories>
 
@@ -22,8 +31,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -35,6 +44,20 @@
             <artifactId>bungeecord-api</artifactId>
             <version>1.7-SNAPSHOT</version>
             <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
+        <!--Spigot API-->
+        <dependency>
+           <groupId>org.spigotmc</groupId>
+           <artifactId>spigot-api</artifactId>
+           <version>1.8.3-R0.1-SNAPSHOT</version>
+           <scope>provided</scope>
+        </dependency>
+        <!--Bukkit API-->
+        <dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>bukkit</artifactId>
+            <version>1.8.3-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
