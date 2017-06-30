@@ -10,7 +10,7 @@
     <resources>
 			<resource>
 				<targetPath>.</targetPath>
-				<directory>${basedir}/</directory>
+				<directory>${basedir}</directory>
 			</resource>
 	</resources>
     <repositories>
