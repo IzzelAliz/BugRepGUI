@@ -13,7 +13,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 public class Bug {
 	/*
-	 * SERIAL REPNAME REPTIME REPMSG EXENAME EXETIME EXEMSG EXECUTED BACK METHOD
+	 * SERIAL REPNAME REPTIME REPMSG EXENAME EXETIME EXEMSG EXECUTED BACK METHOD 
 	 */
 	@SuppressWarnings("deprecation")
 	OfflinePlayer player = Bukkit.getOfflinePlayer("Steve"), exeplayer = Bukkit.getOfflinePlayer("Steve");
