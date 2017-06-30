@@ -6,7 +6,7 @@
 
     <groupId>com.ilummc.bugrepgui</groupId>
     <artifactId>BugRepGUI</artifactId>
-    <version>1.8</version>
+    <version>b</version>
     <resources>
 			<resource>
 				<targetPath>.</targetPath>
@@ -29,10 +29,20 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>3.5.1</version>
+                <executions>  
+                  <execution>  
+                      <id>default-compile</id>  
+                      <phase>compile</phase>  
+                      <goals>  
+                          <goal>compile</goal>  
+                      </goals>  
+                  </execution>  
+              </executions>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <encoding>GBK</encoding>
                 </configuration>
             </plugin>
         </plugins>
