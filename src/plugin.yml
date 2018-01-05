@@ -1,8 +1,8 @@
 name: BugRepGUI
 main: com.ilummc.bugrepgui.Main
-version: 1.8
+version: 1.10
 author: IzzelAliz
-website: https://www.spigotmc.org/resources/bugreportgui-better-than-rating.35119/
+website: https://www.spigotmc.org/resources/35119/
 commands:
   bug:
     description: /bug help for more help
@@ -10,6 +10,9 @@ commands:
   bugrepgui:
     description: /bugrepgui for more help
     usage: /bugrepgui
+  report:
+    description: Report a bug
+    usage: /report
 
 permissions:
   bugrepgui.admin:

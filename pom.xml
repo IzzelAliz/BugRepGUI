@@ -19,27 +19,27 @@
     </repositories>
 
     <build>
-    <sourceDirectory>src</sourceDirectory>
-    <resources>
-			<resource>
-				<targetPath>.</targetPath>
-				<directory>${basedir}/src/</directory>
-			</resource>
-	</resources>
+        <sourceDirectory>src</sourceDirectory>
+        <resources>
+            <resource>
+                <targetPath>.</targetPath>
+                <directory>${basedir}/src/</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.5.1</version>
                 <executions>
-                  <execution>  
-                      <id>default-compile</id>  
-                      <phase>compile</phase>  
-                      <goals>
-                          <goal>compile</goal>  
-                      </goals>
-                  </execution>  
-              </executions>
+                    <execution>
+                        <id>default-compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -57,14 +57,12 @@
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
-        <!--Spigot API-->
         <dependency>
-           <groupId>org.spigotmc</groupId>
-           <artifactId>spigot-api</artifactId>
-           <version>1.8.3-R0.1-SNAPSHOT</version>
-           <scope>provided</scope>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.8.3-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
-        <!--Bukkit API-->
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>

@@ -1,9 +1,8 @@
 package com.ilummc.bugrepgui;
 
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.*;
-
 import com.ilummc.bugrepgui.util.UpdateChecker;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
 	@Override
@@ -15,8 +14,8 @@ public class Main extends JavaPlugin {
 		Storage.init(this.getConfig(), this.getDataFolder(), "lang_" + lang + ".yml");
 		getServer().getPluginManager().registerEvents(new EventListener().setAlias(getConfig().getString("alias")),
 				this);
-		getCommand("bug").setExecutor(new cmdExe());
-		getCommand("bugrepgui").setExecutor(new cmdExe());
+		getCommand("bug").setExecutor(new Commands());
+		getCommand("bugrepgui").setExecutor(new Commands());
 		if (this.getConfig().getBoolean("check-update"))
 			UpdateChecker.check(this.getDescription().getVersion(), this.getDescription().getWebsite());
 	}

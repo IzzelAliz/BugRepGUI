@@ -23,9 +23,9 @@ public class Notify {
 	public static void notifyb(String serial, String msg, Player exename) {
 		Player player = Database.getRepPlayer(serial);
 		if (player.isOnline()) {
-			String str = Database.format.replaceAll("%serial%", serial.toString())
+			String str = Database.format.replaceAll("%serial%", serial)
 					.replaceAll("%exename%", exename.getDisplayName()).replaceAll("%reply%", msg);
-			String str2 = Database.format2.replaceAll("%serial%", serial.toString())
+			String str2 = Database.format2.replaceAll("%serial%", serial)
 					.replaceAll("%exename%", exename.getDisplayName()).replaceAll("%reply%", msg);
 			String msgs[] = { str, Storage.compile(str2) };
 			player.sendMessage(msgs);

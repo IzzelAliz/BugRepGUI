@@ -1,16 +1,11 @@
 package com.ilummc.bugrepgui.bungee;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import com.ilummc.bugrepgui.Storage;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
+
+import java.sql.*;
 import java.util.Collection;
 import java.util.Iterator;
-
-import com.ilummc.bugrepgui.Storage;
-
-import net.md_5.bungee.api.connection.ProxiedPlayer;
 
 public class GlobalNotify {
 	private static Connection c = null;
@@ -146,11 +141,8 @@ public class GlobalNotify {
 			c = DriverManager.getConnection(url, Main.config.getString("mysql-username"),
 					Main.config.getString("mysql-password"));
 			state = c.createStatement();
-		} catch (SQLException e) {
-			Main.printException(e.getMessage());
-			return false;
-		} catch (ClassNotFoundException e) {
-			Main.printException(e.getMessage());
+        } catch (SQLException | ClassNotFoundException e) {
+            Main.printException(e.getMessage());
 			return false;
 		}
 		String sql = "CREATE TABLE IF NOT EXISTS br_bug " + "(SERIAL INT PRIMARY KEY  AUTO_INCREMENT   NOT NULL,"

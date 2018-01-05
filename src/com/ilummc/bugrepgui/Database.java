@@ -1,14 +1,11 @@
 package com.ilummc.bugrepgui;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+
+import java.sql.*;
+import java.util.*;
+import java.util.Date;
 
 public class Database {
 	/*
@@ -317,10 +314,7 @@ public class Database {
 			c = DriverManager.getConnection(url, Storage.getConfig().getString("mysql-username"),
 					Storage.getConfig().getString("mysql-password"));
 			state = c.createStatement();
-		} catch (SQLException e) {
-			Storage.logExcept(e);
-			return false;
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			Storage.logExcept(e);
 			return false;
 		}

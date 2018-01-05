@@ -1,20 +1,17 @@
 package com.ilummc.bugrepgui;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.inventory.Inventory;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class EventListener implements org.bukkit.event.Listener {
+
 	String alias;
 	public EventListener setAlias(String msg) {
 		this.alias = msg;
@@ -38,8 +35,8 @@ public class EventListener implements org.bukkit.event.Listener {
 		}
 	}
 
-	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = false)
-	public void onChat(AsyncPlayerChatEvent evt) {
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onChat(AsyncPlayerChatEvent evt) {
 		String regex2 = "[^']+";
 		Pattern pattern2 = Pattern.compile(regex2);
 		Matcher m2 = pattern2.matcher(evt.getMessage());
@@ -68,8 +65,8 @@ public class EventListener implements org.bukkit.event.Listener {
 		}
 	}
 
-	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = false)
-	public void onMove(PlayerMoveEvent evt) {
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onMove(PlayerMoveEvent evt) {
 		if (Storage.map.containsKey(evt.getPlayer().getUniqueId().toString())) {
 			evt.setCancelled(true);
 			Bug bug = Storage.map.get(evt.getPlayer().getUniqueId().toString());
@@ -84,15 +81,15 @@ public class EventListener implements org.bukkit.event.Listener {
 		}
 	}
 
-	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = false)
-	public void onOffline(PlayerQuitEvent evt) {
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onOffline(PlayerQuitEvent evt) {
 		if (Storage.map.containsKey(evt.getPlayer().getUniqueId().toString())) {
 			Storage.map.remove(evt.getPlayer().getUniqueId().toString());
 		}
 	}
 
-	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = false)
-	public void onClick(InventoryClickEvent evt) {
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onClick(InventoryClickEvent evt) {
 		String regex = "[¡ì[0-9a-fA-f]]*\\u005b\\s[0-9]*\\s/\\s[0-9]*\\s\\u005d\\s*[\\d\\D]*";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher m = pattern.matcher(evt.getInventory().getTitle());
@@ -135,8 +132,8 @@ public class EventListener implements org.bukkit.event.Listener {
 
 	}
 
-	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = false)
-	public void onJoin(PlayerJoinEvent evt) {
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onJoin(PlayerJoinEvent evt) {
 		Database.check(evt.getPlayer());
 	}
 }
